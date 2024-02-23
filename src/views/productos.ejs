@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tienda de Abarrotes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+<div data-role="page" data-theme="a">
+    <div data-role="panel" id="myPanel" data-display="overlay" data-position="left">
+        <h2>Menú</h2>
+        <ul data-role="listview">
+            <li><a href="/productos/agregar" data-ajax="false">Agregar productos</a></li>
+            <li><a href="/clientes/agregar" data-ajax="false">Agregar clientes</a></li>
+            <li><a href="/productos/mostrar"data-ajax="false">Productos</a></li>
+            <li><a href="/clientes/mostrar" data-ajax="false">Clientes</a></li>
+            <li><a href="/acerca/de" data-ajax="false">Acerca de</a></li>
+        </ul>
+    </div>
+
+    <div data-role="header" data-theme="b">
+        <h1>Tienda de Abarrotes "Dany"</h1>
+        <a href="#myPanel" data-icon="bars" data-iconpos="notext">Menú</a>
+    </div>
+    <form>
+        <input data-type="search" id="searchForCollapsibleSet">
+    </form>
+    <div data-role="collapsibleset" data-filter="true" data-inset="true" id="collapsiblesetForFilter" data-input="#searchForCollapsibleSet">    
+        <% products.forEach((product)=>{ %>
+            <div data-role="collapsible" data-filtertext="<%= product.descripcion %>">
+                <h3><%= product.descripcion %></h3>
+                <ul data-role="listview" data-inset="false">
+                <li>Codigo de barras: <%= product.codigo_barras %></li>
+                <li>Descripción: <%= product.descripcion %></li>
+                <li>Marca: <%= product.marca %></li>
+                <li>Precio: <%= product.precio %></li>
+                <li>Costo: <%= product.costo %></li>
+                <li>Stock: <%= product.stock %></li>
+                <li>Fecha de expiración: <%= product.fecha_expiracion %></li>
+                <li>Estatus: <%= product.estatus %></li>
+                <button><a style="text-decoration: none; color: black;" href="/<%= product.codigo_barras %>">Editar</a></button>    
+                <button><a style="text-decoration: none; color: black;" href="/deleteOne/<%= product.codigo_barras %>">Eliminar</a></button>
+            </ul>
+                </div>
+        <% }) %>
+</div>
+
+    <div data-role="footer" data-theme="b">
+        <h4>Contacto</h4>
+        <p>Dirección: Jalapilla, Calle Principal</p>
+        <p>Teléfono: 764-112-5849</p>
+        <p>Email: abarrotesdany@gmail.com</p>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tienda de Abarrotes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+<div data-role="page" data-theme="a">
+    <div data-role="panel" id="myPanel" data-display="overlay" data-position="left">
+        <h2>Menú</h2>
+        <ul data-role="listview">
+            <<li><a href="/productos/agregar" data-ajax="false">Agregar productos</a></li>
+            <li><a href="/clientes/agregar" data-ajax="false">Agregar cliente</a></li>
+            <li><a href="/productos/mostrar" data-ajax="false">Productos</a></li>
+            <li><a href="/clientes/mostrar" data-ajax="false">Clientes</a></li>
+            <li><a href="/acerca/de" data-ajax="false">Acerca de</a></li>
+        </ul>
+    </div>
+
+    <div data-role="header" data-theme="b">
+        <h1>Tienda de Abarrotes "Dany"</h1>
+        <a href="#myPanel" data-icon="bars" data-iconpos="notext">Menú</a>
+    </div>
+    <div data-role="content">
+        <form action="/<%= product.codigo_barras %>" method="post">
+            <div data-role="fieldcontain">
+                <label>Codigo de barras:</label>
+                <input type="text" name="codigo_barras" id="txt_barcode" value="<%= product.codigo_barras %>">
+            </div>
+            <div data-role="fieldcontain">
+                <label>Nombre del Producto:</label>
+                <input type="text" name="descripcion" id="txt_description" value="<%= product.descripcion %>">
+            </div>
+            <div data-role="fieldcontain">
+                <label>Marca:</label>
+                <input type="text" name="marca" id="txt_brand" value="<%= product.marca %>">
+            </div>
+            <div data-role="fieldcontain">
+                <label>Precio:</label>
+                <input type="text" name="precio" id="txt_price" value="<%= product.precio %>">
+            </div>
+            <div data-role="fieldcontain">
+                <label>Costo:</label>
+                <input type="text" name="costo" id="txt_cost" value="<%= product.costo %>">
+            </div>
+
+            <div data-role="fieldcontain">
+                <label>Stock:</label>
+                <input type="text" name="stock" id="txt_stock" value="<%= product.stock %>">
+            </div>
+
+            <div data-role="fieldcontain">
+                <label>Fecha de expiración:</label>
+                <input type="date" name="fecha_expiracion" id="txt_expired_date" value="<%= product.fecha_expiracion %>">
+            </div>
+
+            <label for="flip-2">Activo</label>
+                <select name="estatus" id="flip-2" data-role="slider">
+            <option value="0" <%= product.estatus=0?"selected":""  %>>No</option>
+            <option value="1" <%= product.estatus=1?"selected":""  %>>Si</option>
+                </select>
+                
+
+            <button type="submit" id="submit-6" class="ui-shadow ui-btn ui-corner-all ui-mini">Guardar</button>
+        </form>
+
+    <div data-role="footer" data-theme="b">
+        <h4>Contacto</h4>
+        <p>Dirección: Jalapilla, Calle Principal</p>
+        <p>Teléfono: 764-112-5849</p>
+        <p>Email: abarrotesdany@gmail.com</p>
+    </div>
+
+</div>
+
+</body>
+</html>
